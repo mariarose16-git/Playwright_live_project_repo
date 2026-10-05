@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test'
 import { Login } from '../Pages/Login.js';
 import data from '../Utils/Data.json' with { type: 'json' };
 
-test.only('TC3: login with valid credentials', async({page})=>{
+test('Testing login with valid credentials', async({page})=>{
 
     const loginusername =data.validusername;
     const loginpassword=data.validpassword;
@@ -14,7 +14,7 @@ test.only('TC3: login with valid credentials', async({page})=>{
     await loginobj.verifyLogInHomePage();
 })
 
-test('TC4: login with invalid username and valid password', async({page})=>{
+test('Testing login with invalid username and valid password', async({page})=>{
 
     const loginusername1 =data.invalidusername;
     const loginpassword1=data.validpassword;
@@ -26,7 +26,7 @@ test('TC4: login with invalid username and valid password', async({page})=>{
 
 })
 
-test('TC5: Verify login with valid username and invalid password ',async({page})=>{
+test('Testing login with valid username and invalid password ',async({page})=>{
 
    const loginusername2 =data.validusername;
     const loginpassword2=data.invalidpassword;
@@ -34,9 +34,10 @@ test('TC5: Verify login with valid username and invalid password ',async({page})
     await loginobj2.navigateToApplication();
    await loginobj2.loginlinkclick();
     await loginobj2.login(loginusername2,loginpassword2);
+    await loginobj2.verifyInvalidCrendetial();
 })
 
-test('TC6: Verify login with invalid username and invalid password ',async({page})=>{
+test('Testing login with invalid username and invalid password ',async({page})=>{
 
     const loginusername3 =data.invalidusername;
     const loginpassword3=data.invalidpassword;
@@ -44,5 +45,6 @@ test('TC6: Verify login with invalid username and invalid password ',async({page
     await loginobj3.navigateToApplication();
    await loginobj3.loginlinkclick();
     await loginobj3.login(loginusername3,loginpassword3);
+    await loginobj3.verifyInvalidCrendetial();
 })
 

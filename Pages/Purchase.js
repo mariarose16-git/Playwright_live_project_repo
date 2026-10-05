@@ -11,7 +11,8 @@ export class Purchase{
         this.selectcatogory=page.locator("//a[text()='Phones']");
          this.productSelect = page.locator("//a[text()='Samsung galaxy s6']");
          this.selectcatogorymonitor=page.locator("//a[text()='Monitors']");
-         this.productSelectmonitor = page.locator("//a[text()='Apple monitor 24']");
+         this.productSelectmonitor = page.getByText('Apple monitor 24')
+         //this.productSelectmonitor = page.locator("//a[text()='Apple monitor 24']");
          this.addtocartbutton =page.locator("//a[text()='Add to cart']");
          this.clickcart=page.locator("#cartur");
          this.placeorderbutton=page.getByRole('button',{name: 'Place Order'});
@@ -23,6 +24,8 @@ export class Purchase{
          this.orderyear=page.locator('#year');
          this.purchasebutton=page.getByRole('button',{name:'Purchase'});
          this.clickok=page.getByRole('button', { name: 'OK' });
+         this.confirmation = page.locator('.sweet-alert');
+         //this.confirmation = page.getByText('Thank you for your purchase!');
 
          
     }
@@ -90,7 +93,12 @@ async fillOrderdetails(name,country,city,creditcard,month,year){
 }
 async clickPurchasebutton(){
     await this.purchasebutton.click();
-    await this.clickok.click();
+  //  await this.clickok.click();
 }
 
+
+async verifyPurchase() {
+
+  await expect(this.confirmation).toContainText("Thank you for your purchase!");
+}
 }

@@ -4,7 +4,7 @@ import data from '../Utils/Data.json/' with {type:'json'}
 //import { from } from 'node:stream/iter';
 
 
-test('TC8: Login with valid credentials -> Select a product under Phones-> Add to Cart -> Click "ok" on the popup -> Add details -> Purchase',async({page})=>{
+test('Testing Purchase :Login with valid credentials -> Select a product under Phones-> Add to Cart -> Click "ok" on the popup -> Add details -> Purchase',async({page})=>{
 
     const loginusername6=data.validpassword;
     const loginpassword6=data.validpassword;
@@ -25,10 +25,11 @@ test('TC8: Login with valid credentials -> Select a product under Phones-> Add t
     await purchase.placeOrderButton();
     await purchase.fillOrderdetails(pname,pcountry,city,creditcard,month,year)
     await purchase.clickPurchasebutton();
+    await purchase.verifyPurchase();
 
 })
 
-test(' TC9:Login with valid credentials -> Select a product under Monitors-> Add to Cart -> Click "ok" on the popup -> Add details -> Purchase ',async({page})=>{
+test('Testing Purchase : Login with valid credentials -> Select a product under Monitors-> Add to Cart -> Click "ok" on the popup -> Add details -> Purchase ',async({page})=>{
 const loginusername7=data.validpassword;
     const loginpassword7=data.validpassword;
     const pname=data.name;
@@ -48,5 +49,6 @@ const loginusername7=data.validpassword;
     await purchase.placeOrderButton();
     await purchase.fillOrderdetails(pname,pcountry,city,creditcard,month,year)
     await purchase.clickPurchasebutton();
+     await purchase.verifyPurchase();
 
 })

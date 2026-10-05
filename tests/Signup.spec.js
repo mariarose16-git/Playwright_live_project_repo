@@ -2,12 +2,11 @@ import {test} from '@playwright/test'
 import { Signup } from '../Pages/Signup';
 import data from '../Utils/Data.json' with { type: 'json' };
 
-test.only('Signup by entering data',async({page})=>{
+test('Testing Signup by entering data',async({page})=>{
 
 
     const username=data.validusername;
     const password=data.validpassword;
-    //await page.goto("https://www.demoblaze.com/")
     const signup1= new Signup(page);
     await signup1.navigateToApplication();
     await signup1.clickSignuplink();
@@ -16,7 +15,7 @@ test.only('Signup by entering data',async({page})=>{
     await signup1.verifySignupbutton();
 })
 
-test('Signup and click on close',async({page})=>{
+test('TestingSignup and click on close',async({page})=>{
     const usernameclose=data.validusername;
     const passwordclose=data.validpassword;
     const closeobj= new Signup(page);

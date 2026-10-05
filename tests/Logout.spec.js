@@ -3,7 +3,7 @@ import{test,expect} from '@playwright/test'
 import data from '../Utils/Data.json/' with {type:'json'}
 import { Logout } from '../Pages/Logout.js';
 
-test('Login with valid credentials -> Logout ',async({page})=>{
+test('Testing Logout functionality',async({page})=>{
     const loginusername6=data.validpassword;
     const loginpassword6=data.validpassword;
     const logout =new Logout(page);
@@ -11,5 +11,6 @@ test('Login with valid credentials -> Logout ',async({page})=>{
     await logout.loginlinkclick();
     await logout.login(loginusername6,loginpassword6);
     await logout.clickLogout();
+    await logout.verifyLogout();
 
 })

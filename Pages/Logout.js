@@ -33,4 +33,8 @@ export class Logout{
     async clickLogout(){
         await this.logoutbutton.click();
     }
+
+    async verifyLogout(){
+        await expect(this.loginlink).toBeEnabled();
+    }
 }
